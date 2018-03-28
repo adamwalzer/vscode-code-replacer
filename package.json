@@ -1,0 +1,67 @@
+{
+  "name": "code-replacer",
+  "displayName": "code-replacer",
+  "version": "0.0.1",
+  "icon": "images/icon.png",
+  "description": "a vscode extension for replacing code",
+  "publisher": "adamwalzer",
+  "author": {
+    "name": "Adam Walzer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamwalzer/vscode-code-replacer"
+  },
+  "engines": {
+    "vscode": "^1.5.0"
+  },
+  "categories": [
+    "Linters"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "license": "MIT",
+  "main": "./out/src/extension",
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "code-replacer configuration",
+      "properties": {
+        "codeReplacer.replaceOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "determines if this extension should auto-replace code on save"
+        },
+        "codeReplacer.statusBarText": {
+          "type": "string",
+          "default": "`$(telescope) ${codes.length} code segments to replace`",
+          "description": "The display text in the status bar"
+        },
+        "codeReplacer.configs": {
+          "type": "object",
+          "default": {
+            "scss": {
+              "#000": "$black",
+              "#FFF": "$white"
+            }
+          },
+          "description": "The configs for each language"
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.32",
+    "@types/node": "^6.0.40",
+    "mocha": "^2.3.3",
+    "typescript": "^2.7.1",
+    "vscode": "^1.0.0"
+  }
+}
