@@ -2,7 +2,9 @@
 
 This is a small vscode extension to help replace values with variables in css files.
 
-<!-- ![Alt text](images/demo.gif?raw=true "Demo Gif") -->
+![Alt text](images/demo.gif?raw=true "Finding Demo Gif")
+
+![Alt text](images/replace-demo.gif?raw=true "Replacement Demo Gif")
 
 ## Features
 
