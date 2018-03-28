@@ -17,7 +17,9 @@ This extension has everything you need.
 ## Extension Settings
 
 `codeReplacer.replaceOnSave` determines if this extension should auto-replace code on save.
+
 `codeReplacer.statusBarText` determines what's written in the status bar.
+
 `codeReplacer.rules` is the rules for each language.
 
 Default settings
@@ -27,6 +29,9 @@ Default settings
     "codeReplacer.replaceOnSave": false,
     "codeReplacer.statusBarText": "`$(telescope) ${codes.length} code segments to replace`",
     "codeReplacer.rules": {
+        "js": {
+            " var ": " let "
+        },
         "scss": {
             "#000": "$black",
             "#FFF": "$white"
