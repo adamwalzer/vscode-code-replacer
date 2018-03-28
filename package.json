@@ -30,6 +30,12 @@
     "test": "node ./node_modules/vscode/bin/test"
   },
   "contributes": {
+    "commands": [
+      {
+        "command": "replaceCodes",
+        "title": "Code Replacer: Replace For Document"
+      }
+    ],
     "configuration": {
       "type": "object",
       "title": "code-replacer configuration",
@@ -44,15 +50,18 @@
           "default": "`$(telescope) ${codes.length} code segments to replace`",
           "description": "The display text in the status bar"
         },
-        "codeReplacer.configs": {
+        "codeReplacer.rules": {
           "type": "object",
           "default": {
+            "js": {
+              " var ": " let "
+            },
             "scss": {
               "#000": "$black",
               "#FFF": "$white"
             }
           },
-          "description": "The configs for each language"
+          "description": "The rules for each language"
         }
       }
     }
