@@ -40,6 +40,35 @@ Default settings
 }
 ```
 
+Vimeo Settings should include
+
+```settings.json
+{
+    "codeReplacer.rules": {
+        "scss": {
+            "#00adef": "$VimeoBlue"
+            "#e5f7fd": "$Foam"
+            "#7fc400": "$Pistachio"
+            "#f2f9e5": "$RumSwizzle"
+            "#ff4d4d": "$SunsetOrange"
+            "#ffeded": "$PalePink"
+            "#1a2e3b": "$AstroGranite"
+            "#8699a6": "$RegentGray"
+            "#b3bfc8": "$SoutherlySky"
+            "#e3e8e9": "$Porcelain"
+            "#eef1f2": "$Plaster"
+            "#f6f7f8": "$Paste"
+            "#fff": "$White"
+            "#0088cc": "$VimeoBlue-Darkened"
+            "#5a9e02": "$Pistachio-Darkened"
+            "#d93636": "$SunsetOrange-Darkened"
+            "#ffb21e": "$WarningYellow"
+            "#2E2E2E": "$DarkDark"
+        }
+    }
+}
+```
+
 ## Known Issues
 
 Known issues are tracked on github. Feel free to post them there or resolve some of the issues you see.
