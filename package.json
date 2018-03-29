@@ -1,7 +1,7 @@
 {
   "name": "code-replacer",
   "displayName": "code-replacer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "icon": "images/icon.png",
   "description": "a vscode extension for replacing code",
   "publisher": "adamwalzer",

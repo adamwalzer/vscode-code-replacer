@@ -75,7 +75,7 @@ class CodeFinder {
                 while ((match = pair[0].exec(line)) != null) {
                     b.push(new Diagnostic(
                         new Range(lineNum, match.index, lineNum, match.index + match[0].length),
-                        `Replace with "${pair[1]}"`,
+                        `Replace "${match[0]}" with "${pair[1]}"`,
                         DiagnosticSeverity.Warning
                     ));
                 }
