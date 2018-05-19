@@ -20,6 +20,8 @@ This extension has everything you need.
 
 `codeReplacer.statusBarText` determines what's written in the status bar.
 
+`codeReplacer.includeDefaultRules` determines if overriding the rules will include the defaults. If true, defaults will be merged in with configured rules.
+
 `codeReplacer.rules` is the rules for each language.
 
 Default settings
@@ -28,6 +30,7 @@ Default settings
 {
     "codeReplacer.replaceOnSave": false,
     "codeReplacer.statusBarText": "`$(telescope) ${codes.length} code segments to replace`",
+    "codeReplacer.includeDefaultRules": false,
     "codeReplacer.rules": {
         "js": {
             " var ": " let "

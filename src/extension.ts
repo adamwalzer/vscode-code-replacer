@@ -16,11 +16,44 @@ import {
     WorkspaceEdit,
 } from 'vscode';
 
-const {
+const originalConfiguration = workspace.getConfiguration('codeReplacer');
+let {
     rules,
     statusBarText,
     replaceOnSave,
-} = workspace.getConfiguration('codeReplacer');
+    includeDefaultRules,
+} = originalConfiguration;
+
+const getConfig = () => {
+    const newConfiguration = workspace.getConfiguration('codeReplacer');
+    statusBarText = newConfiguration.statusBarText;
+    replaceOnSave = newConfiguration.replaceOnSave;
+    includeDefaultRules = newConfiguration.includeDefaultRules;
+
+    if (!includeDefaultRules) {
+        const inspectedRules = newConfiguration.inspect('rules');
+        const rulesWithoutDefaults = Object.keys(inspectedRules).reduce((a, k) => {
+            if (k !== 'key' && k !== 'defaultValue') {
+                a = {
+                    ...a,
+                    ...inspectedRules[k],
+                };
+            }
+            return a;
+        }, {});
+
+        rules = Object.keys(rulesWithoutDefaults).length ? rulesWithoutDefaults : newConfiguration.rules;
+    } else {
+        rules = newConfiguration.rules;
+    }
+
+    return {
+        statusBarText,
+        replaceOnSave,
+        includeDefaultRules,
+        rules,
+    };
+};
 
 // This method is called when your extension is activated. Activation is
 // controlled by the activation events defined in package.json.
@@ -57,6 +90,8 @@ class CodeFinder {
             this._statusBarItem.hide();
             return;
         }
+
+        getConfig();
 
         const ext = /(?:\.([^.]+))?$/.exec(editor.document.fileName)[1];
         if (!rules.hasOwnProperty(ext)) {
@@ -99,6 +134,8 @@ class CodeFinder {
             this._statusBarItem.hide();
             return;
         }
+
+        getConfig();
 
         const ext = /(?:\.([^.]+))?$/.exec(editor.document.fileName)[1];
         if (!rules.hasOwnProperty(ext)) {
@@ -147,6 +184,8 @@ class CodeFinderController {
         window.onDidChangeActiveTextEditor(this.findCodes, this, subscriptions);
         workspace.onDidChangeTextDocument(this.findCodes, this, subscriptions);
         workspace.onDidSaveTextDocument(this.findCodes, this, subscriptions);
+
+        getConfig();
 
         if (replaceOnSave) {
             workspace.onDidSaveTextDocument(this.replaceCodes, this, subscriptions);

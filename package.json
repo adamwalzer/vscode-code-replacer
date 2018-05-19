@@ -1,7 +1,7 @@
 {
   "name": "code-replacer",
   "displayName": "code-replacer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "icon": "images/icon.png",
   "description": "a vscode extension for replacing code",
   "publisher": "adamwalzer",
@@ -50,6 +50,11 @@
           "default": "`$(telescope) ${codes.length} code segments to replace`",
           "description": "The display text in the status bar"
         },
+        "codeReplacer.includeDefaultRules": {
+          "type": "boolean",
+          "default": false,
+          "description": "determines if overriding the rules will include the defaults. If true, defaults will be merged in with configured rules"
+        },
         "codeReplacer.rules": {
           "type": "object",
           "default": {
@@ -57,8 +62,8 @@
               " var ": " let "
             },
             "scss": {
-              "#000": "$black",
-              "#FFF": "$white"
+              "#000;": "$black;",
+              "#FFF;": "$white;"
             }
           },
           "description": "The rules for each language"
