@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "css-variable-replacer" extension will be documented in this file.
 
+### [0.0.5]
+
+Make `replaceOnSave` update without needed a window reload. Thanks to [@MFava91](https://github.com/MFava91) for reporting this issue.
+
 ### [0.0.4]
 
 Allow for overriding of defaults and recalculations of rules when updated. Thanks to [@MFava91](https://github.com/MFava91) for the suggestions.

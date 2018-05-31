@@ -183,13 +183,9 @@ class CodeFinderController {
 
         window.onDidChangeActiveTextEditor(this.findCodes, this, subscriptions);
         workspace.onDidChangeTextDocument(this.findCodes, this, subscriptions);
-        workspace.onDidSaveTextDocument(this.findCodes, this, subscriptions);
+        workspace.onDidSaveTextDocument(this.onSave, this, subscriptions);
 
         getConfig();
-
-        if (replaceOnSave) {
-            workspace.onDidSaveTextDocument(this.replaceCodes, this, subscriptions);
-        }
 
         // update the error finder for the current file
         this._codeFinder.findCodes();
@@ -204,6 +200,14 @@ class CodeFinderController {
 
     replaceCodes = () => {
         this._codeFinder.replaceCodes();
+    }
+
+    onSave = () => {
+        if (replaceOnSave) {
+            this._codeFinder.replaceCodes();
+        } else {
+            this._codeFinder.findCodes();
+        }
     }
 
     dispose() {
